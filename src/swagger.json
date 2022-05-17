@@ -1,0 +1,11 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+      "title": "Workers Documentation",
+      "description": "This is an API Workers",
+      "version": "1.0.0",
+      "contact": {
+          "email": "pauloandre@stagerun.com.br"
+      }
+  }
+}
