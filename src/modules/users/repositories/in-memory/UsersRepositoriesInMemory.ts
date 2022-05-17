@@ -32,7 +32,6 @@ export class UsersRepositoryInMemory implements IUsersRepository {
       name: userData.name,
       email: userData.email,
       password: userData.password,
-      profile: userData.profile,
     });
 
     this.users.push(user);

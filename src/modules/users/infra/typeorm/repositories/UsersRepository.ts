@@ -18,17 +18,11 @@ export class UsersRepository implements IUsersRepository {
     return users;
   }
 
-  async create({
-    name,
-    email,
-    password,
-    profile,
-  }: ICreateUserDTO): Promise<User> {
+  async create({ name, email, password }: ICreateUserDTO): Promise<User> {
     const user = this.repository.create({
       name,
       password,
       email,
-      profile,
     });
 
     await this.repository.save(user);

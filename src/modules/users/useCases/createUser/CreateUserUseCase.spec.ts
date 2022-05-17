@@ -24,7 +24,6 @@ describe('CreateUserUseCase', () => {
       name: 'User',
       email: 'test@gmail.com',
       password: '123456',
-      profile: 'admin',
     });
 
     expect(user).toHaveProperty('id');
@@ -35,7 +34,6 @@ describe('CreateUserUseCase', () => {
       name: 'User 01',
       email: 'test@gmail.com',
       password: '123456',
-      profile: 'admin',
     });
 
     await expect(
@@ -43,7 +41,6 @@ describe('CreateUserUseCase', () => {
         name: 'User 02',
         email: 'test@gmail.com',
         password: '123456',
-        profile: 'admin',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

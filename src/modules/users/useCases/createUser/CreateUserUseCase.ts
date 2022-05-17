@@ -16,12 +16,7 @@ export class CreateUserUseCase {
     private hashProvider: IHashProvider,
   ) {}
 
-  async execute({
-    name,
-    email,
-    password,
-    profile,
-  }: ICreateUserDTO): Promise<User> {
+  async execute({ name, email, password }: ICreateUserDTO): Promise<User> {
     const userWithEmailAlreadyExists = await this.usersRepository.findByEmail(
       email,
     );
@@ -36,7 +31,6 @@ export class CreateUserUseCase {
       name,
       email,
       password: passwordHash,
-      profile,
     });
 
     return user;
