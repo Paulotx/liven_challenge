@@ -1,4 +1,4 @@
-import { getRepository, Like, Repository } from 'typeorm';
+import { getRepository, Repository } from 'typeorm';
 
 import { ICreateUserDTO } from '@modules/users/dtos/ICreateUserDTO';
 import { IUsersRepository } from '@modules/users/repositories/IUsersRepository';
@@ -13,7 +13,7 @@ export class UsersRepository implements IUsersRepository {
   }
 
   async listAll(): Promise<User[]> {
-    const users = await this.repository.find();
+    const users = await this.repository.find({ relations: ['addresses'] });
 
     return users;
   }
@@ -43,6 +43,7 @@ export class UsersRepository implements IUsersRepository {
       where: {
         id,
       },
+      relations: ['addresses'],
     });
 
     return user;
