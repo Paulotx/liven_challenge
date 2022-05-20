@@ -4,8 +4,11 @@ import {
   UpdateDateColumn,
   Entity,
   PrimaryColumn,
+  OneToMany,
 } from 'typeorm';
 import { v4 as uuid } from 'uuid';
+
+import { Address } from '@modules/addresses/infra/typeorm/entities/Address';
 
 @Entity('users')
 export class User {
@@ -20,6 +23,9 @@ export class User {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Address, (address) => address.user)
+  addresses: Address[];
 
   @CreateDateColumn()
   created_at: Date;
