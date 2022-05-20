@@ -1,3 +1,4 @@
+import { instanceToPlain } from 'class-transformer';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
@@ -15,6 +16,8 @@ export class CreateUserController {
       password,
     });
 
-    return response.status(201).json(user);
+    return response
+      .status(201)
+      .json(instanceToPlain(user, { strategy: 'exposeAll' }));
   }
 }

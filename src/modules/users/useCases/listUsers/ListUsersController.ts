@@ -1,3 +1,4 @@
+import { instanceToPlain } from 'class-transformer';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
@@ -9,6 +10,8 @@ export class ListUsersController {
 
     const users = await listUsersUseCase.execute();
 
-    return response.status(200).json(users);
+    return response
+      .status(200)
+      .json(instanceToPlain(users, { strategy: 'exposeAll' }));
   }
 }
