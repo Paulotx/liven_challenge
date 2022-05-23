@@ -16,12 +16,10 @@ const showUserController = new ShowUserController();
 const updateUserController = new UpdateUserController();
 const deleteUserController = new DeleteUserController();
 
-usersRoutes.use(ensureAuthenticated);
-
 usersRoutes.post('/', createUserController.handle);
-usersRoutes.get('/', listUsersController.handle);
-usersRoutes.get('/:id', showUserController.handle);
-usersRoutes.put('/:id', updateUserController.handle);
-usersRoutes.delete('/:id', deleteUserController.handle);
+usersRoutes.get('/', ensureAuthenticated, listUsersController.handle);
+usersRoutes.get('/:id', ensureAuthenticated, showUserController.handle);
+usersRoutes.put('/:id', ensureAuthenticated, updateUserController.handle);
+usersRoutes.delete('/:id', ensureAuthenticated, deleteUserController.handle);
 
 export default usersRoutes;
