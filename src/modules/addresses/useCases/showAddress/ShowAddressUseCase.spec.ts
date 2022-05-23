@@ -17,7 +17,7 @@ describe('ShowUserUseCase', () => {
     showAddress = new ShowAddressUseCase(addressesRepositoriesInMemory);
   });
 
-  it('should be able to show a address', async () => {
+  it('should be able to show an address', async () => {
     const user = await usersRepositoryInMemory.create({
       name: 'User',
       email: 'test@gmail.com',
