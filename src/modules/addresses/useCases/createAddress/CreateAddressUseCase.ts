@@ -4,7 +4,6 @@ import { ICreateAddressDTO } from '@modules/addresses/dtos/ICreateAddressDTO';
 import { Address } from '@modules/addresses/infra/typeorm/entities/Address';
 import { IAddressesRepository } from '@modules/addresses/repositories/IAddressesRepository';
 import { IUsersRepository } from '@modules/users/repositories/IUsersRepository';
-import IHashProvider from '@shared/container/providers/HashProvider/models/IHashProvider';
 import { AppError } from '@shared/errors/AppError';
 
 @injectable()
@@ -15,9 +14,6 @@ export class CreateAddressUseCase {
 
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
-
-    @inject('HashProvider')
-    private hashProvider: IHashProvider,
   ) {}
 
   async execute({

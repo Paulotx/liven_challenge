@@ -1,25 +1,21 @@
 import { AddressesRepositoriesInMemory } from '@modules/addresses/repositories/in-memory/AddressesRepositoriesInMemory';
 import { UsersRepositoryInMemory } from '@modules/users/repositories/in-memory/UsersRepositoriesInMemory';
-import HashProviderInMemory from '@shared/container/providers/HashProvider/in-memory/HashProviderInMemory';
 import { AppError } from '@shared/errors/AppError';
 
 import { CreateAddressUseCase } from './CreateAddressUseCase';
 
 let usersRepositoryInMemory: UsersRepositoryInMemory;
 let addressesRepositoriesInMemory: AddressesRepositoriesInMemory;
-let hashProviderInMemory: HashProviderInMemory;
 let createAddress: CreateAddressUseCase;
 
 describe('CreateUserUseCase', () => {
   beforeEach(() => {
     addressesRepositoriesInMemory = new AddressesRepositoriesInMemory();
     usersRepositoryInMemory = new UsersRepositoryInMemory();
-    hashProviderInMemory = new HashProviderInMemory();
 
     createAddress = new CreateAddressUseCase(
       addressesRepositoriesInMemory,
       usersRepositoryInMemory,
-      hashProviderInMemory,
     );
   });
 
